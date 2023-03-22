@@ -13,3 +13,16 @@ h1{
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
 }
+
+.pConBorde
+{
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    padding-bottom: 50px;
+    padding-left: 100px;
+    padding-top: 100px;
+    margin-left: -50px;
+    margin-top: 50px;
+
+}
