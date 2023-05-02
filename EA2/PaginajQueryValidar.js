@@ -22,7 +22,6 @@ $(function()
         if(patron.indexOf(caracter) < 0)
             return false; // no dibuja el carecter de la tecla
     })
-
     $('.txtNombre').keypress(function(e)
     {
         let caracter = String.fromCharCode(e.which);
@@ -30,7 +29,6 @@ $(function()
         if(nombre.indexOf(caracter) < 0)
             return false; // no dibuja el carecter de la tecla
     })
-
     $('.txtEmail').keypress(function(e)
     {
         let caracter = String.fromCharCode(e.which);
