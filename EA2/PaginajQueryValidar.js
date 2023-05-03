@@ -81,7 +81,6 @@ $(function()
 
     })
 
-
     function esValidoElRut(Rut,Digito)
     {
 		let contador= Rut.length-1;
@@ -92,11 +91,11 @@ $(function()
 		for( ; contador>=0 ; contador--)
 		{
 			caracter = Rut.charAt(contador);
-			suma += (factor * caracter);
+			suma += (factor * Rut.charAt(contador));
 			if (++factor > 7)
 				factor=2;		
 		}
-        return "-123456789K0".charAt(11-(suma % 11)) == Digito.toUpperCase();            
+        return "-123456789K0".charAt(11-(suma % 11)) == Digito.toUpperCase();
     }   
 
 });
