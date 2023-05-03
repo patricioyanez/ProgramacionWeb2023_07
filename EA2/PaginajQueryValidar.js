@@ -36,7 +36,6 @@ $(function()
         if(patron.indexOf(caracter) < 0)
             return false; // no dibuja el carecter de la tecla
     })
-
     $('.btnLimpiar').click(function()
     {
         $('.txtRut, .txtDv, .txtNombre, .txtEmail').val('');
