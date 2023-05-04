@@ -12,21 +12,12 @@
         $(function() {
             $('.btnVerCategorias').click(function()
             {
-                $('.tblCategorias').empty('');
-                $.get('https://www.themealdb.com/api/json/v1/1/categories.php',
+                $.get('https://mindicador.cl/api',
                 function(data)
                 {
-                    $.each(data.categories, function(i, item)
-                    {
-                        $('.tblCategorias').append(
-                            '<tr>' +
-                                '<td>' + item.idCategory +
-                                '<td><img src="' + item.strCategoryThumb + '">' +
-                                '<td>' + item.strCategory +
-                                '<td>' + item.strCategoryDescription +
-                                '</tr>'
-                        );
-                    });
+                   $('.txtFecha').val(data.uf.fecha.substring(0,10));
+                   $('.txtUf').val(data.uf.valor);
+                   $('.txtDolar').val(data.dolar.valor);
                 });
             });
         });
@@ -36,17 +27,14 @@
 </head>
 <body>
     <div class="container">
-        <button class="btnVerCategorias">Ver categorías</button>
-        <table class="tblCategorias">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>imagen</th>
-                    <th>Categoria</th>
-                    <th>Descripción</th>
-                </tr>
-            </thead>
-        </table>
+        <button class="btnVerCategorias">Indicadores económicos</button><br>
+        <label for="txtUf">Fecha </label>
+        <input type="date" class="txtFecha"><br>
+
+        <label for="txtUf">Valor UF</label>
+        <input type="text" readonly class="txtUf">
+        <label for="txtUf">Valor Dolar</label>
+        <input type="text" readonly class="txtDolar">
     </div>
 </body>
 </html>
