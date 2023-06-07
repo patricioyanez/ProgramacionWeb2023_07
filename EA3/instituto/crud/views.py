@@ -28,4 +28,12 @@ def marca(request):
             listado = Marca.objects.all()
             context = {'listado': listado}
 
+        elif 'Buscar' in request.POST:
+            try:
+                item = Marca.objects.get(pk = id) # 1 fila de la tabla 
+                context = {'item': item }
+            except:
+                context = {'error': 'No se pudo encontrar el registro'}
+
+
     return render(request, 'marca.html', context)
