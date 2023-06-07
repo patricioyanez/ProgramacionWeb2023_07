@@ -29,9 +29,16 @@ def marca(request):
             context = {'listado': listado}
 
         elif 'Buscar' in request.POST:
-            try:
+            try: # select * from marca where idMarca = X
                 item = Marca.objects.get(pk = id) # 1 fila de la tabla 
                 context = {'item': item }
+            except:
+                context = {'error': 'No se pudo encontrar el registro'}
+        elif 'Eliminar' in request.POST:
+            try:
+                item = Marca.objects.get(pk = id) # 1 fila de la tabla 
+                item.delete() # delete
+                context = {'exito': 'El id fue eliminado'}
             except:
                 context = {'error': 'No se pudo encontrar el registro'}
 
