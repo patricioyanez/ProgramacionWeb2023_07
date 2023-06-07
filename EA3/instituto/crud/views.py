@@ -25,7 +25,7 @@ def marca(request):
                     context = {'error': 'No se pudo encontrar el registro'}
 
         elif 'Listar' in request.POST:
-            listado = Marca.objects.all()
+            listado = Marca.objects.all() # select * from marca
             context = {'listado': listado}
 
         elif 'Buscar' in request.POST:
