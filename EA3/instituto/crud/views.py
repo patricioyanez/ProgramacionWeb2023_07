@@ -3,6 +3,39 @@ from django.shortcuts import render
 from .models import Marca, Categoria
 # Create your views here.
 
+# importar Forms
+from .forms import CategoriaForm, ClienteForm
+# importar decoradores
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def menu(request):
+    return render(request, 'menu.html')  
+
+def clienteForm(request):
+    context = {'form': ClienteForm()}
+    if request.method == 'POST':
+        if 'Grabar' in request.POST:
+            form = ClienteForm(request.POST)
+            if form.is_valid():
+                form.save()
+                context['exito'] = 'Los datos fueron guardados'
+            else:
+                context['error'] = 'Los datos NO fueron guardados'
+    return render(request, 'categoriaForm.html', context)
+
+def categoriaForm(request):
+    context = {'form': CategoriaForm()}
+    if request.method == 'POST':
+        if 'Grabar' in request.POST:
+            form = CategoriaForm(request.POST)
+            if form.is_valid():
+                form.save()
+                context['exito'] = 'Los datos fueron guardados'
+            else:
+                context['error'] = 'Los datos NO fueron guardados'
+    return render(request, 'categoriaForm.html', context)
+
 def categoria(request):
     context = {}
     if request.method == 'POST': # si hay solicitud POST
@@ -45,6 +78,7 @@ def categoria(request):
 
     return render(request, 'categoria.html', context)
 
+@login_required
 def marca(request):
     context = {}
     if request.method == 'POST': # si hay solicitud POST
